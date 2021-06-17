@@ -12,7 +12,7 @@ const User = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     if (enteredUser.username.length === 0 || enteredUser.age.length === 0) {
-      console.log('Please enter a valid name and age (non-empty values');
+      console.log('Please enter a valid name and age (non-empty values)');
     } else if (enteredUser.age < 1) {
       console.log('Please enter a valid age (>0)');
     }
