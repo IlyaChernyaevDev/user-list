@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const User = () => {
+const User = (props) => {
   const [enteredUser, setEnteredUser] = useState({ username: '', age: '' });
 
   const inputHandler = (event) => {
@@ -15,15 +15,31 @@ const User = () => {
       console.log('Please enter a valid name and age (non-empty values)');
     } else if (enteredUser.age < 1) {
       console.log('Please enter a valid age (>0)');
+    } else {
+      props.addNewUser(enteredUser);
+      setEnteredUser({
+        username: '',
+        age: '',
+      });
     }
   };
 
   return (
     <form onSubmit={submitHandler}>
       <label>Username</label>
-      <input type='text' onChange={inputHandler} name='username' />
+      <input
+        type='text'
+        onChange={inputHandler}
+        name='username'
+        value={enteredUser.username}
+      />
       <label>Age (Years)</label>
-      <input type='number' onChange={inputHandler} name='age' />
+      <input
+        type='number'
+        onChange={inputHandler}
+        name='age'
+        value={enteredUser.age}
+      />
       <button type='submit'>Add user</button>
     </form>
   );
