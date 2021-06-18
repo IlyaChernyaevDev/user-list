@@ -2,9 +2,15 @@ import React, { useState } from 'react';
 
 import User from './components/User/User';
 import UserList from './components/UserList/UserList';
+import ErrorModal from './components/UI/ErrorModal/ErrorModal';
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [errorModalInfo, setErrorModalInfo] = useState({
+    show: false,
+    errorTitle: '',
+    errorText: '',
+  });
 
   const addNewUser = ({ username, age }) => {
     setUsers((prevUsers) => {
@@ -20,8 +26,11 @@ function App() {
 
   return (
     <div>
-      <User addNewUser={addNewUser} />
-      {users.length > 0 ? <UserList items={users} deleteUser={deleteUser}/> : null}
+      <User addNewUser={addNewUser} setErrorModalInfo={setErrorModalInfo} />
+      {users.length > 0 ? (
+        <UserList items={users} deleteUser={deleteUser} />
+      ) : null}
+      <ErrorModal errorModalInfo={errorModalInfo} setErrorModalInfo={setErrorModalInfo}/>
     </div>
   );
 }

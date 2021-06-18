@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Button from '../UI/Button/Button';
+
 const User = (props) => {
   const [enteredUser, setEnteredUser] = useState({ username: '', age: '' });
 
@@ -13,8 +15,18 @@ const User = (props) => {
     event.preventDefault();
     if (enteredUser.username.length === 0 || enteredUser.age.length === 0) {
       console.log('Please enter a valid name and age (non-empty values)');
+      props.setErrorModalInfo({
+        show: true,
+        errorTitle: 'Invalid input',
+        errorText: 'Please enter a valid name and age (non-empty values)',
+      });
     } else if (enteredUser.age < 1) {
       console.log('Please enter a valid age (>0)');
+      props.setErrorModalInfo({
+        show: true,
+        errorTitle: 'Invalid input',
+        errorText: 'Please enter a valid age (>0)',
+      });
     } else {
       props.addNewUser(enteredUser);
       setEnteredUser({
