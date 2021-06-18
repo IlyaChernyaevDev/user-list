@@ -14,14 +14,12 @@ const User = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     if (enteredUser.username.length === 0 || enteredUser.age.length === 0) {
-      console.log('Please enter a valid name and age (non-empty values)');
       props.setErrorModalInfo({
         show: true,
         errorTitle: 'Invalid input',
         errorText: 'Please enter a valid name and age (non-empty values)',
       });
     } else if (enteredUser.age < 1) {
-      console.log('Please enter a valid age (>0)');
       props.setErrorModalInfo({
         show: true,
         errorTitle: 'Invalid input',
@@ -52,7 +50,7 @@ const User = (props) => {
         name='age'
         value={enteredUser.age}
       />
-      <button type='submit'>Add user</button>
+      <Button type={'submit'}>Add user</Button>
     </form>
   );
 };

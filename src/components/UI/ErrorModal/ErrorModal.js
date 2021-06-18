@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 
+import Button from '../Button/Button';
 import styles from './ErrorModal.module.css';
 
 const ErrorModal = ({ errorModalInfo, setErrorModalInfo }) => {
   if (!errorModalInfo.show) {
     return null;
   }
+
+  const closeErrorModal = () => {
+    setErrorModalInfo({
+      show: false,
+      errorTitle: '',
+      errorText: '',
+    });
+  };
 
   return (
     <div className={styles.backdrop}>
@@ -15,18 +24,9 @@ const ErrorModal = ({ errorModalInfo, setErrorModalInfo }) => {
         </div>
         <div className={styles.content}>
           {errorModalInfo.errorText}
-          <button
-            className={styles.actions}
-            onClick={() => {
-              setErrorModalInfo({
-                show: false,
-                errorTitle: '',
-                errorText: '',
-              });
-            }}
-          >
+          <Button type={'button'} action={closeErrorModal}>
             Okay
-          </button>
+          </Button>
         </div>
       </div>
     </div>
