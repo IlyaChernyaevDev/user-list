@@ -1,34 +1,36 @@
 import React from 'react';
 
+import Card from '../Card';
 import Button from '../Button';
-import styles from './ErrorModal.module.css';
+import classes from './ErrorModal.module.css';
 
-const ErrorModal = ({ errorModalInfo, setErrorModalInfo }) => {
-  if (!errorModalInfo.show) {
-    return null;
-  }
+const ErrorModal = (props) => {
+  // if (!errorModalInfo.show) {
+  //   return null;
+  // }
 
-  const closeErrorModal = () => {
-    setErrorModalInfo({
-      show: false,
-      errorTitle: '',
-      errorText: '',
-    });
-  };
+  // const closeErrorModal = () => {
+  //   setErrorModalInfo({
+  //     show: false,
+  //     errorTitle: '',
+  //     errorText: '',
+  //   });
+  // };
 
   return (
-    <div className={styles.backdrop}>
-      <div className={styles.modal}>
-        <div className={styles.header}>
-          <h2>{errorModalInfo.errorTitle}</h2>
+    <div>
+      <div className={classes.backdrop}/>
+      <Card className={classes.modal}>
+        <header className={classes.header}>
+          <h2>{props.title}</h2>
+        </header>
+        <div className={classes.content}>
+          <p>{props.message}</p>
         </div>
-        <div className={styles.content}>
-          {errorModalInfo.errorText}
-          <Button type={'button'} action={closeErrorModal}>
-            Okay
-          </Button>
-        </div>
-      </div>
+        <footer className={classes.actions}>
+          <Button>Okay</Button>
+        </footer>
+      </Card>
     </div>
   );
 };
