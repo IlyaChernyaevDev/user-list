@@ -22,10 +22,10 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <AddUser onAddUser={addUserHandler} />
       <UsersList users={usersList} onDeleteUser={deleteUserHandler} />
-    </div>
+    </>
   );
 }
 
