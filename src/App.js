@@ -5,18 +5,21 @@ import UsersList from './components/Users/UsersList';
 import ErrorModal from './components/UI/ErrorModal';
 
 function App() {
-  // const [users, setUsers] = useState([]);
+  const [usersList, setUsersList] = useState([]);
   // const [errorModalInfo, setErrorModalInfo] = useState({
   //   show: false,
   //   errorTitle: '',
   //   errorText: '',
   // });
 
-  // const addNewUser = ({ username, age }) => {
-  //   setUsers((prevUsers) => {
-  //     return [...prevUsers, { username, age, id: Date.now() }];
-  //   });
-  // };
+  const addUserHandler = (uName, uAge) => {
+    setUsersList((prevUsersList) => {
+      return [
+        ...prevUsersList,
+        { name: uName, age: uAge, id: Math.random().toString() },
+      ];
+    });
+  };
 
   // const deleteUser = (id) => {
   //   setUsers((prevUsers) => {
@@ -26,8 +29,8 @@ function App() {
 
   return (
     <div>
-      <AddUser />
-      <UsersList users={[]}/>
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={usersList} />
     </div>
   );
 }
