@@ -1,36 +1,33 @@
 import React, { useState } from 'react';
 
 import AddUser from './components/Users/AddUser';
-import UserList from './components/Users/UserList';
+import UsersList from './components/Users/UsersList';
 import ErrorModal from './components/UI/ErrorModal';
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [errorModalInfo, setErrorModalInfo] = useState({
-    show: false,
-    errorTitle: '',
-    errorText: '',
-  });
+  // const [users, setUsers] = useState([]);
+  // const [errorModalInfo, setErrorModalInfo] = useState({
+  //   show: false,
+  //   errorTitle: '',
+  //   errorText: '',
+  // });
 
-  const addNewUser = ({ username, age }) => {
-    setUsers((prevUsers) => {
-      return [...prevUsers, { username, age, id: Date.now() }];
-    });
-  };
+  // const addNewUser = ({ username, age }) => {
+  //   setUsers((prevUsers) => {
+  //     return [...prevUsers, { username, age, id: Date.now() }];
+  //   });
+  // };
 
-  const deleteUser = (id) => {
-    setUsers((prevUsers) => {
-      return prevUsers.filter((user) => user.id !== id);
-    });
-  };
+  // const deleteUser = (id) => {
+  //   setUsers((prevUsers) => {
+  //     return prevUsers.filter((user) => user.id !== id);
+  //   });
+  // };
 
   return (
     <div>
-      <AddUser addNewUser={addNewUser} setErrorModalInfo={setErrorModalInfo} />
-      {users.length > 0 ? (
-        <UserList items={users} deleteUser={deleteUser} />
-      ) : null}
-      <ErrorModal errorModalInfo={errorModalInfo} setErrorModalInfo={setErrorModalInfo}/>
+      <AddUser />
+      <UsersList users={[]}/>
     </div>
   );
 }
