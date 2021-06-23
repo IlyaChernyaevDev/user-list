@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import User from './components/User/User';
-import UserList from './components/UserList/UserList';
+import AddUser from './components/Users/AddUser/AddUser';
+import UserList from './components/Users/UserList/UserList';
 import ErrorModal from './components/UI/ErrorModal/ErrorModal';
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div>
-      <User addNewUser={addNewUser} setErrorModalInfo={setErrorModalInfo} />
+      <AddUser addNewUser={addNewUser} setErrorModalInfo={setErrorModalInfo} />
       {users.length > 0 ? (
         <UserList items={users} deleteUser={deleteUser} />
       ) : null}

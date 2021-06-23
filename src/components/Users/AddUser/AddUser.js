@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import Button from '../UI/Button/Button';
+import Button from '../../UI/Button/Button';
 
-const User = (props) => {
+const AddUser = (props) => {
   const [enteredUser, setEnteredUser] = useState({ username: '', age: '' });
 
   const inputHandler = (event) => {
@@ -55,4 +55,4 @@ const User = (props) => {
   );
 };
 
-export default User;
+export default AddUser;
