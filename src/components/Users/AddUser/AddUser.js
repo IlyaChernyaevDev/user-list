@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Button from '../../UI/Button/Button';
+import Card from '../../UI/Card/Card';
 
 const AddUser = (props) => {
   const [enteredUser, setEnteredUser] = useState({ username: '', age: '' });
@@ -11,7 +12,7 @@ const AddUser = (props) => {
     });
   };
 
-  const submitHandler = (event) => {
+  const addUserHandler = (event) => {
     event.preventDefault();
     if (enteredUser.username.length === 0 || enteredUser.age.length === 0) {
       props.setErrorModalInfo({
@@ -34,24 +35,36 @@ const AddUser = (props) => {
     }
   };
 
+  // return (
+  //   <form onSubmit={submitHandler}>
+  //     <label>Username</label>
+  //     <input
+  //       type='text'
+  //       onChange={inputHandler}
+  //       name='username'
+  //       value={enteredUser.username}
+  //     />
+  //     <label>Age (Years)</label>
+  //     <input
+  //       type='number'
+  //       onChange={inputHandler}
+  //       name='age'
+  //       value={enteredUser.age}
+  //     />
+  //     <Button type={'submit'}>Add user</Button>
+  //   </form>
+  // );
+
   return (
-    <form onSubmit={submitHandler}>
-      <label>Username</label>
-      <input
-        type='text'
-        onChange={inputHandler}
-        name='username'
-        value={enteredUser.username}
-      />
-      <label>Age (Years)</label>
-      <input
-        type='number'
-        onChange={inputHandler}
-        name='age'
-        value={enteredUser.age}
-      />
-      <Button type={'submit'}>Add user</Button>
-    </form>
+    <Card>
+      <form onSubmit={addUserHandler}>
+        <label htmlFor='username'>Username</label>
+        <input id='username' type='text' />
+        <label htmlFor='age'>Age (Years)</label>
+        <input id='age' type='number' />
+        <button type='submit'>Add User</button>
+      </form>
+    </Card>
   );
 };
 
